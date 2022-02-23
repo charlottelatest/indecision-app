@@ -1,17 +1,23 @@
+const appProp = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['A', 'B', 'C'],
+};
+
+const getOptions = (options) => {
+  return options && options.length > 0 ? (
+    <p>Here are your options: {options.join(',')}</p>
+  ) : (
+    'No options'
+  );
+};
+
 const template = (
   <div>
-    <h1>Indecision App</h1> <p>resr</p>
+    <h1>{appProp.title ? appProp.title : 'Untitled App'}</h1>
+    {appProp.subtitle && <p>{appProp.subtitle}</p>}
+    {getOptions(appProp.options)}
   </div>
 );
 
-const templateTwo = (
-  <div>
-    <h1>Charlotte Zhang</h1>
-    <p>Age: 29</p>
-    <p>Location: New Taipei City</p>
-  </div>
-);
-
-const appRoot = document.querySelector('#main');
-
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, document.querySelector('#main'));

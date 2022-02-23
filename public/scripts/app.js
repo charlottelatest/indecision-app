@@ -1,41 +1,34 @@
 'use strict';
 
+var appProp = {
+  title: 'Indecision App',
+  subtitle: 'Put your life in the hands of a computer',
+  options: ['A', 'B', 'C']
+};
+
+var getOptions = function getOptions(options) {
+  return options && options.length > 0 ? React.createElement(
+    'p',
+    null,
+    'Here are your options: ',
+    options.join(',')
+  ) : 'No options';
+};
+
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    appProp.title ? appProp.title : 'Untitled App'
   ),
-  ' ',
-  React.createElement(
+  appProp.subtitle && React.createElement(
     'p',
     null,
-    'resr'
-  )
+    appProp.subtitle
+  ),
+  getOptions(appProp.options)
 );
 
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    'Charlotte Zhang'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Age: 29'
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Location: New Taipei City'
-  )
-);
-
-var appRoot = document.querySelector('#main');
-
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, document.querySelector('#main'));
