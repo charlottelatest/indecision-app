@@ -1,34 +1,82 @@
 'use strict';
 
-var appProp = {
+var app = {
   title: 'Indecision App',
   subtitle: 'Put your life in the hands of a computer',
-  options: ['A', 'B', 'C']
+  options: ['A', 'B', 'C', 'D']
 };
 
-var getOptions = function getOptions(options) {
-  return options && options.length > 0 ? React.createElement(
-    'p',
+var renderApp = function renderApp() {
+  var template = React.createElement(
+    'div',
     null,
-    'Here are your options: ',
-    options.join(',')
-  ) : 'No options';
+    React.createElement(
+      'h1',
+      null,
+      app.title
+    ),
+    app.subtitle && React.createElement(
+      'p',
+      null,
+      app.subtitle
+    ),
+    React.createElement(
+      'p',
+      null,
+      app.options.length > 0 ? 'Here are your options' : 'No options'
+    ),
+    React.createElement(
+      'button',
+      { onClick: removeOption },
+      'Remove All'
+    ),
+    React.createElement(
+      'ol',
+      null,
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          option
+        );
+      })
+    ),
+    React.createElement(
+      'p',
+      null,
+      app.options.length
+    ),
+    React.createElement(
+      'form',
+      { onSubmit: onFormSubmit },
+      React.createElement('input', { type: 'text', name: 'option' }),
+      React.createElement(
+        'button',
+        null,
+        'Add Option'
+      )
+    )
+  );
+
+  ReactDOM.render(template, document.querySelector('#main'));
 };
 
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    appProp.title ? appProp.title : 'Untitled App'
-  ),
-  appProp.subtitle && React.createElement(
-    'p',
-    null,
-    appProp.subtitle
-  ),
-  getOptions(appProp.options)
-);
+var removeOption = function removeOption() {
+  app.options = [];
+  renderApp();
+};
 
-ReactDOM.render(template, document.querySelector('#main'));
+var onFormSubmit = function onFormSubmit(e) {
+  e.preventDefault();
+
+  var option = e.target.elements.option.value;
+  console.log(option);
+
+  app.options.push(option);
+  console.log(app.options.length);
+  e.target.elements.option.value = '';
+
+  renderApp();
+};
+
+renderApp();
