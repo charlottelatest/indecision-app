@@ -1,3 +1,33 @@
+class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handlePlusOne = this.handlePlusOne.bind(this);
+    this.handleMinusOne = this.handleMinusOne.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+  }
+  handlePlusOne() {
+    alert('handlePlusOne');
+  }
+  handleMinusOne() {
+    alert('handleMinusOne');
+  }
+  handleReset() {
+    alert('handleReset');
+  }
+  render() {
+    return (
+      <div>
+        <h1>Counter: </h1>
+        <button onClick={this.handlePlusOne}>+1</button>
+        <button onClick={this.handleMinusOne}>-1</button>
+        <button onClick={this.handleReset}>Reset</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Counter />, document.querySelector('#main'));
+
 // const appProp = {
 //   title: 'Indecision App',
 //   subtitle: 'Put your life in the hands of a computer',
@@ -20,35 +50,35 @@
 //   </div>
 // );
 
-let count = 0;
+// let count = 0;
 
-const handleAddOne = () => {
-  console.log('add one');
-  count++;
-  renderCounterApp();
-};
+// const handleAddOne = () => {
+//   console.log('add one');
+//   count++;
+//   renderCounterApp();
+// };
 
-const handleMinusOne = () => {
-  console.log('minus one');
-  count--;
-  renderCounterApp();
-};
+// const handleMinusOne = () => {
+//   console.log('minus one');
+//   count--;
+//   renderCounterApp();
+// };
 
-const handleReset = () => {
-  console.log('reset');
-};
+// const handleReset = () => {
+//   console.log('reset');
+// };
 
-const renderCounterApp = () => {
-  const template = (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={handleAddOne}>+1</button>
-      <button onClick={handleMinusOne}>-1</button>
-      <button onClick={handleReset}>Reset</button>
-    </div>
-  );
+// const renderCounterApp = () => {
+//   const template = (
+//     <div>
+//       <h1>Count: {count}</h1>
+//       <button onClick={handleAddOne}>+1</button>
+//       <button onClick={handleMinusOne}>-1</button>
+//       <button onClick={handleReset}>Reset</button>
+//     </div>
+//   );
 
-  ReactDOM.render(template, document.querySelector('#main'));
-};
+//   ReactDOM.render(template, document.querySelector('#main'));
+// };
 
-renderCounterApp();
+// renderCounterApp();
