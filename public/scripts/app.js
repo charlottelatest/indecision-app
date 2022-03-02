@@ -8,47 +8,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_React$Component) {
-  _inherits(Counter, _React$Component);
+var InfoToggle = function (_React$Component) {
+  _inherits(InfoToggle, _React$Component);
 
-  function Counter(props) {
-    _classCallCheck(this, Counter);
+  function InfoToggle(prop) {
+    _classCallCheck(this, InfoToggle);
 
-    var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (InfoToggle.__proto__ || Object.getPrototypeOf(InfoToggle)).call(this, prop));
 
-    _this.handlePlusOne = _this.handlePlusOne.bind(_this);
-    _this.handleMinusOne = _this.handleMinusOne.bind(_this);
-    _this.handleReset = _this.handleReset.bind(_this);
+    _this.handleToggle = _this.handleToggle.bind(_this);
     _this.state = {
-      count: 0
+      isVisible: false
     };
     return _this;
   }
 
-  _createClass(Counter, [{
-    key: 'handlePlusOne',
-    value: function handlePlusOne() {
+  _createClass(InfoToggle, [{
+    key: 'handleToggle',
+    value: function handleToggle() {
       this.setState(function (prevState) {
         return {
-          count: prevState.count + 1
-        };
-      });
-    }
-  }, {
-    key: 'handleMinusOne',
-    value: function handleMinusOne() {
-      this.setState(function (prevState) {
-        return {
-          count: prevState.count - 1
-        };
-      });
-    }
-  }, {
-    key: 'handleReset',
-    value: function handleReset() {
-      this.setState(function () {
-        return {
-          count: 0
+          isVisible: !prevState.isVisible
         };
       });
     }
@@ -61,84 +41,64 @@ var Counter = function (_React$Component) {
         React.createElement(
           'h1',
           null,
-          'Counter: ',
-          this.state.count
+          'InforToggle'
         ),
         React.createElement(
           'button',
-          { onClick: this.handlePlusOne },
-          '+1'
+          { onClick: this.handleToggle },
+          this.state.isVisible ? 'Hide detail' : 'Show detail'
         ),
-        React.createElement(
-          'button',
-          { onClick: this.handleMinusOne },
-          '-1'
-        ),
-        React.createElement(
-          'button',
-          { onClick: this.handleReset },
-          'Reset'
+        this.state.isVisible && React.createElement(
+          'p',
+          null,
+          'the epic detail'
         )
       );
     }
   }]);
 
-  return Counter;
+  return InfoToggle;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.querySelector('#main'));
+ReactDOM.render(React.createElement(InfoToggle, null), document.querySelector('#main'));
 
-// const appProp = {
-//   title: 'Indecision App',
-//   subtitle: 'Put your life in the hands of a computer',
-//   options: ['A', 'B', 'C'],
+// my code
+// const handleToggle = (e) => {
+//   const buttonText = e.target.innerText;
+//   const detail = e.target.nextSibling.innerText;
+//   console.log(detail);
+//   if (buttonText === 'Show details') {
+//     e.target.innerText = 'Hide details';
+//   } else {
+//     e.target.innerText = 'Show details';
+//   }
 // };
 
-// const getOptions = (options) => {
-//   return options && options.length > 0 ? (
-//     <p>Here are your options: {options.join(',')}</p>
-//   ) : (
-//     'No options'
-//   );
+// my code after watching Andrew Mead
+// let isVisible = false;
+
+// const handleToggle = () => {
+//   isVisible = !isVisible;
+//   render();
 // };
 
-// const template = (
-//   <div>
-//     <h1>{appProp.title ? appProp.title : 'Untitled App'}</h1>
-//     {appProp.subtitle && <p>{appProp.subtitle}</p>}
-//     {getOptions(appProp.options)}
-//   </div>
-// );
-
-// let count = 0;
-
-// const handleAddOne = () => {
-//   console.log('add one');
-//   count++;
-//   renderCounterApp();
-// };
-
-// const handleMinusOne = () => {
-//   console.log('minus one');
-//   count--;
-//   renderCounterApp();
-// };
-
-// const handleReset = () => {
-//   console.log('reset');
-// };
-
-// const renderCounterApp = () => {
+// const render = () => {
 //   const template = (
 //     <div>
-//       <h1>Count: {count}</h1>
-//       <button onClick={handleAddOne}>+1</button>
-//       <button onClick={handleMinusOne}>-1</button>
-//       <button onClick={handleReset}>Reset</button>
+//       <h1>Visibility Toggle</h1>
+//       <button onClick={handleToggle}>
+//         {isVisible ? 'Hide details' : 'Show details'}
+//       </button>
+//       {isVisible && (
+//         <div>
+//           <p>show up</p>
+//         </div>
+//       )}
+//       <p></p>
 //     </div>
 //   );
 
 //   ReactDOM.render(template, document.querySelector('#main'));
 // };
 
-// renderCounterApp();
+// render();
