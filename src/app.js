@@ -1,5 +1,6 @@
-import isSenior, { isAdult, canDrink } from './person.js';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(isAdult(19));
-console.log(canDrink(19));
-console.log(isSenior(64));
+const template = <p>123</p>;
+
+ReactDOM.render(template, document.querySelector('#main'));

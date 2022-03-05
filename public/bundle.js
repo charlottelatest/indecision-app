@@ -60,41 +60,16 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/******/ ({
 
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__person_js__ = __webpack_require__(2);
+/***/ 6:
+/***/ (function(module, exports) {
 
-
-console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["c" /* isAdult */](19));
-console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["a" /* canDrink */](19));
-console.log(__WEBPACK_IMPORTED_MODULE_0__person_js__["b" /* default */](64));
-
-
-/***/ }),
-/* 1 */,
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return isAdult; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return canDrink; });
-const isAdult = (age) => age >= 18;
-
-const canDrink = (age) => age >= 21;
-
-const isSenior = (age) => age >= 64;
-
-
-
-/* harmony default export */ __webpack_exports__["b"] = (isSenior);
-
+throw new Error("Module parse failed: /Users/jsdryan/react-course-projects/indecision-app/src/app.js Unexpected token (4:17)\nYou may need an appropriate loader to handle this file type.\n| import ReactDOM from 'react-dom';\n| \n| const template = <p>123</p>;\n| \n| ReactDOM.render(template, document.querySelector('#main'));");
 
 /***/ })
-/******/ ]);
+
+/******/ });
