@@ -19,6 +19,7 @@ var IndecisionApp = function (_React$Component) {
     _this.handleRemoveAll = _this.handleRemoveAll.bind(_this);
     _this.handlePick = _this.handlePick.bind(_this);
     _this.handleAddOption = _this.handleAddOption.bind(_this);
+    _this.handleRemoveOne = _this.handleRemoveOne.bind(_this);
     _this.state = {
       options: props.options
     };
@@ -51,8 +52,17 @@ var IndecisionApp = function (_React$Component) {
     key: 'handleRemoveAll',
     value: function handleRemoveAll() {
       this.setState(function () {
+        return { options: [] };
+      });
+    }
+  }, {
+    key: 'handleRemoveOne',
+    value: function handleRemoveOne(option) {
+      this.setState(function (prevState) {
         return {
-          options: []
+          options: prevState.options.filter(function (o) {
+            return option !== o;
+          })
         };
       });
     }
@@ -71,7 +81,8 @@ var IndecisionApp = function (_React$Component) {
         }),
         React.createElement(Options, {
           options: this.state.options,
-          handleRemoveAll: this.handleRemoveAll
+          handleRemoveAll: this.handleRemoveAll,
+          handleRemoveOne: this.handleRemoveOne
         }),
         React.createElement(AddOption, { handleAddOption: this.handleAddOption })
       );
@@ -106,6 +117,7 @@ Header.defaultProps = {
   title: 'Indecision'
 };
 
+// Options component
 var Options = function Options(props) {
   return React.createElement(
     'div',
@@ -119,17 +131,28 @@ var Options = function Options(props) {
       'ul',
       null,
       props.options.map(function (option) {
-        return React.createElement(Option, { option: option });
+        return React.createElement(Option, { option: option, handleRemoveOne: props.handleRemoveOne });
       })
     )
   );
 };
 
+// Option component
 var Option = function Option(props) {
   return React.createElement(
     'li',
     null,
-    props.option
+    props.option,
+    ' ',
+    React.createElement(
+      'button',
+      {
+        onClick: function onClick() {
+          props.handleRemoveOne(props.option);
+        }
+      },
+      'remove'
+    )
   );
 };
 
