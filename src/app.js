@@ -9,6 +9,21 @@ class IndecisionApp extends React.Component {
       options: props.options,
     };
   }
+  componentDidMount() {
+    try {
+      const json = localStorage.getItem('options');
+      const options = JSON.parse(json);
+      if (options) {
+        this.setState(() => ({ options }));
+      }
+    } catch (e) {}
+  }
+  componentDidUpdate(_prevProps, prevState) {
+    if (prevState.options.length !== this.state.options.length) {
+      const json = JSON.stringify(this.state.options);
+      localStorage.setItem('options', json);
+    }
+  }
   handleAddOption(option) {
     if (!option) {
       return 'Please enter a valid option.';
@@ -73,6 +88,7 @@ Header.defaultProps = {
 const Options = (props) => (
   <div>
     <button onClick={props.handleRemoveAll}>Remove All</button>
+    {props.options.length === 0 && <p>Please add an option to get started!</p>}
     <ul>
       {props.options.map((option) => {
         return (
