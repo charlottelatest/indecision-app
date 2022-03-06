@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const template = <p>123</p>;
+const template = (
+  <div>
+    <h1>test test test</h1>
+  </div>
+);
 
 ReactDOM.render(template, document.querySelector('#main'));
