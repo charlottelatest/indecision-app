@@ -6,15 +6,13 @@ export default (props) => (
     <button onClick={props.handleRemoveAll}>Remove All</button>
     {props.options.length === 0 && <p>Please add an option to get started!</p>}
     <ul>
-      {props.options.map((option) => {
-        return (
-          <Option
-            key={option}
-            option={option}
-            handleRemoveOne={props.handleRemoveOne}
-          />
-        );
-      })}
+      {props.options.map((option) => (
+        <Option
+          key={option}
+          option={option}
+          handleRemoveOne={props.handleRemoveOne}
+        />
+      ))}
     </ul>
   </div>
 );
