@@ -1,8 +1,13 @@
 import React from 'react';
 
 export default (props) => (
-  <li>
+  <div>
     {props.option}
-    <button onClick={(e) => props.handleRemoveOne(props.option)}>remove</button>
-  </li>
+    <button
+      className="button button--link"
+      onClick={(e) => props.handleRemoveOne(props.option)}
+    >
+      remove
+    </button>
+  </div>
 );
